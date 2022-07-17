@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body{
+        background-color: rgb(71, 68, 68);
+      }
+      .cont{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 75vh;
+        width: 75vw;
+        background-color: rgb(0, 0, 0);
+        margin: auto;
+        margin-top: 10vh;
+        border: 5px solid white;
+        border-radius: 20px;
+      }
+      #btn{
+        margin: 0vw 45vw 0vw 45vw;
+      }
+      .input,.output{
+        background-color: rgb(0, 0, 0);
+        width: 40%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #inp,#unit,#ou,#unit-1{
+        height: 7%;
+        margin: 3%;
+        background-color: rgb(35, 32, 32);
+        color: aliceblue;
+        padding: 1%;
+        padding-left: 3%;
+        border: 3px solid white;
+        border-radius: 15px;
+        color: azure;
+        font-weight: 500;
+        box-shadow: 0px 0px 10px 3px rgb(60, 0, 255);
+      }
+      #inp:hover{
+        box-shadow: 0px 0px 10px 8px rgb(171, 59, 191);
+        background-color: black;
+        transform: scale(1.06);
+      }
+      #ou:hover{
+        box-shadow: 0px 0px 10px 8px rgb(171, 59, 191);
+        background-color: black;
+        transform: scale(1.06);
+      }
+      #unit:hover{
+        box-shadow: 0px 0px 10px 8px rgb(171, 59, 191);
+        background-color: black;
+        transform: scale(1.06);
+        
+      }
+      #boi:hover{
+        box-shadow: 0px 0px 10px 8px rgb(171, 59, 191);
+        background-color: black;
+        transform: scale(1.06);
+        color:white;
+      }
+      #unit-1:hover{
+        box-shadow: 0px 0px 10px 8px rgb(171, 59, 191);
+        background-color: black;
+        transform: scale(1.06);
+
+      }
+      
+     
+      #et{
+        
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        width: 10%;
+        color: aliceblue;
+        padding: 1px;
+        height: 5%;
+        border: 3px solid white;
+        box-shadow: 0px 0px 5px 5px rgb(205, 30, 30);
+        
+
+      }
+      #boi{
+        position: relative;
+        bottom: 15px;
+        background-color: rgb(255, 255, 255);
+        font-size: 100%;
+        font-weight: 600;
+        border-radius: 20px;
+        box-shadow: 0px 0px 10px 5px rgb(174, 153, 153);
+      }
+      .op{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+      }
+      @media (max-width:1300px){
+        .cont{
+          flex-direction: column;
+        }
+        .input,.output{
+          flex-direction: column;
+        }
+        #unit,#unit-1{
+          height: 12%;
+        }
+        #inp,#ou{
+          height: 12%;
+        }
+        .op{
+          
+        }
+        #et{
+          width: 30%;
+          position: relative;
+        bottom: 10px;
+        }
+        #boi{
+          position: relative;
+          right: 20px;
+        }
+      }
+      @media (max-width:300px){
+        #inp,#ou{
+          height: 13%;
+          width: 170%;
+          margin: 20px
+        }
+        #et{
+          width: 50%;
+          position: relative;
+        bottom: 10px;
+        }
+
+      }
+      #boi{
+        position: relative;
+        right:40px;
+      }
+    
+   
+    </style>
+
+  </head>
+  <body>
+   
+    <div class="cont">
+      <div class="input">
+        <input id="inp" type="number" class="input-1" onclick="calculate()" onkeyup="calculate()">
+        <select id="unit" name="units">
+          <option  class="op" value="m">Meter</option>
+          <option class="op" value="cm">C.M</option>
+          <option class="op" value="f">Feet</option>
+          <option class="op" value="k">K.M</option>
+
+        </select>
+      </div>
+      <div id="et">Equal To</div>
+      <div class="output">
+        <input type="number" id="ou" class="input-1">
+        <select id="unit-1" onchange="calculate()" name="units">
+          <option class="op" value="m">Meter</option>
+          <option class="op" value="cm">C.M</option>
+          <option class="op" value="f">Feet</option>
+          <option class="op" value="k">K.M</option>
+        </select>
+      </div>
+      
+
+    </div>
+    <div id="btn"><button id="boi" onclick="calculate()">Convert</button></div>
+    
+<script>
+  function calculate(){
+    var inputunit=document.getElementById('unit').value;
+    var outputunit=document.getElementById('unit-1').value;
+    var inputvalue=document.getElementById('inp').value;
+    if(inputunit=='m' && outputunit=='m'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue;
+    }
+    else  if(inputunit=='m' && outputunit=='cm'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue*100;
+    }
+    else  if(inputunit=='m' && outputunit=='k'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue/100;
+    }
+    else  if(inputunit=='m' && outputunit=='f'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue*3.28;
+    }
+    else  if(inputunit=='cm' && outputunit=='m'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue/100;
+    }
+    else  if(inputunit=='cm' && outputunit=='cm'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue;
+    }
+    else  if(inputunit=='cm' && outputunit=='f'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue*0.0328084;
+    }
+    else  if(inputunit=='cm' && outputunit=='k'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue/100000;
+    }
+    else  if(inputunit=='f' && outputunit=='m'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue/3.28;
+    }
+    else  if(inputunit=='f' && outputunit=='cm'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue*30.48;
+    }
+    else  if(inputunit=='f' && outputunit=='f'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue;
+    }
+    else  if(inputunit=='f' && outputunit=='k'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue/3281;
+    }
+    else  if(inputunit=='k' && outputunit=='k'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue;
+    }
+    else  if(inputunit=='k' && outputunit=='f'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue*3280.84;
+    }
+    else  if(inputunit=='k' && outputunit=='m'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue*1000;
+    }
+    else  if(inputunit=='k' && outputunit=='cm'){
+      var text=document.getElementById('ou');
+      text.value=inputvalue*100000;
+    }
+    else{
+
+    };
+    
+
+   
+  }
+
+</script>
+  </body>
+</html>
